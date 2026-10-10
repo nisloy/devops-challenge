@@ -19,5 +19,6 @@ for dir in "${directories[@]}"; do
 		fi
 	fi
 done
-		
+(tree)
+(ls -l */*) # alternatively we can display reuslts using ls -lR (This works recursively it will show all itesm in folder:)
 		
