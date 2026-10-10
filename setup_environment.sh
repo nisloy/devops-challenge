@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 directories=(logs configs scripts)
-for dir in "${directories[@]}"; do 
-	if [[ $dir == "logs" ]]; then
-		(mkdir logs && cd logs && touch system.log && echo "Amuza add some logs">system.log)
-		if [[ -d "logs" ]]; then 
-			(chmod  644 logs/*)
-		fi
-	elif [[ $dir == "configs" ]]; then 
-		(mkdir configs && cd configs && touch app.conf && echo "Amuza add some lconfigs here also">app.conf)
-		if [[ -d  "configs" ]]; then 
-			(chmod  444 configs/*)
-		fi
+for dir in "${directories[@]}"; do
+	if [[ -d "$dir" ]]; then
+		echo "Directory already exists: $dir"
 	else
+		if [[ $dir == "logs" ]]; then
+			(mkdir logs && cd logs && touch system.log && echo "Amuza add some logs">system.log)
+			(chmod  644 logs/*)
+		elif [[ $dir == "configs" ]]; then 
+			(mkdir configs && cd configs && touch app.conf && echo "Amuza add some lconfigs here also">app.conf)
+			(chmod  444 configs/*)
+		else
 
-		(mkdir scripts && cd scripts && touch backup.sh && echo "This is the backup bash">backup.sh)
-		if [[ -d "scripts" ]]; then 
+			(mkdir scripts && cd scripts && touch backup.sh && echo "This is the backup bash">backup.sh)
 			(chmod 755 scripts/*)
 		fi
 	fi
