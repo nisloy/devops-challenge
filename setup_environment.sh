@@ -6,14 +6,14 @@ for dir in "${directories[@]}"; do
 	else
 		if [[ $dir == "logs" ]]; then
 			(mkdir logs && cd logs && touch system.log && echo "Amuza add some logs">system.log)
-			(chmod  644 logs/*)
+			(chmod  644 "$dir"/*)
 		elif [[ $dir == "configs" ]]; then 
 			(mkdir configs && cd configs && touch app.conf && echo "Amuza add some lconfigs here also">app.conf)
-			(chmod  444 configs/*)
+			(chmod  444 "$dir"/*)
 		else
 
 			(mkdir scripts && cd scripts && touch backup.sh && echo "This is the backup bash">backup.sh)
-			(chmod 755 scripts/*)
+			(chmod 755 "$dir"/*)
 		fi
 	fi
 done
